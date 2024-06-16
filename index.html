@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Get data titile music api from zeno.fm javascript Js print on tag html</title>
+        <link rel="stylesheet" href="footer.css">
+  </head>
+    </body>
+
+  </table>
+  <p><b>Now playing:</b> <label id="ttl">Loading...</label></p>
+
+      <style>
+body {
+  text-align: center;
+}
+table,
+#ttl {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  border: 1px solid red;
+  height: 1px;
+}
+ </style>
+
+  <script>
+
+  try {
+  const evtSource = new EventSource(
+    "https://api.zeno.fm/mounts/metadata/subscribe/ylt5ucr8nzhvv"
+  );
+  evtSource.onmessage = (event) => {
+    let title = JSON.parse(event.data).streamTitle;
+    document.getElementById("ttl").innerHTML = title;
+    document.title = `${title} | Mi Fm`;
+  };
+} catch (err) {
+  document.getElementById("ttl").innerHTML = "Error";
+}
+  <script>
+
+  </body>
+</html>
